@@ -6,9 +6,10 @@ ARG VERSION=6.18.0
     
 RUN set -xe;\
     echo "@community http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories; \
+    echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories; \
     apk update; \
     apk add util-linux build-base cmake libuv-static libuv-dev openssl-dev hwloc-dev@community; \
-    apk add kmod; \
+    apk add kmod msr-tools@testing; \
     wget https://github.com/xmrig/xmrig/archive/v${VERSION}.tar.gz; \
     tar xf v${VERSION}.tar.gz; \
     mkdir -p xmrig-${VERSION}/build; \
